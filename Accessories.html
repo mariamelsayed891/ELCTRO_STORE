@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accessories | ElectroStore</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="CSS/main.css">
+</head>
+<body>
+
+<header>
+    <div class="header-left">
+        <h1 class="logo" onclick="location.href='index.html'" style="cursor:pointer">Electro<span>Store</span></h1>
+    </div>
+    <nav>
+        <a href="index.html"><i class="fa-solid fa-house"></i> Home</a>
+        <a href="smartphones.html">Smartphones</a>
+        <a href="Laptops.html">Laptops</a>
+        <a href="Headphones.html">Headphones</a>
+        <a href="Accessories.html" class="active">Accessories</a>
+        <a href="cart.html" class="cart-link"><i class="fa-solid fa-cart-shopping"></i> Cart</a>
+    </nav>
+</header>
+
+<div class="back-nav">
+    <button class="back-btn" onclick="history.back()">← Back</button>
+</div>
+
+<section class="page-title">
+    <h2>Accessories</h2>
+    <p>Premium Electronics Accessories for Your Devices</p>
+</section>
+
+<section class="product-grid">
+
+    <div class="product-card">
+        <img src="images/product/watch.jpg" alt="Apple Watch" class="product-img">
+        <h3 class="product-name">Apple Watch Series 10</h3>
+        <p class="product-desc">42mm Black, OLED Always-on display, Advanced health tracking sensors.</p>
+        <div class="review-box">
+            <div class="stars">★★★★★</div>
+            <p class="review-text">"The sleep tracking is incredibly accurate and the screen is beautiful."</p>
+            <span class="reviewer-name">— Omar</span>
+        </div>
+        <div class="price-tag">EGP 19,000</div>
+        <div class="card-actions">
+            <div class="qty-control">
+                <button class="qty-btn minus">−</button>
+                <span class="qty-val">1</span>
+                <button class="qty-btn plus">+</button>
+            </div>
+            <div class="bottom-row">
+                <button class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
+                <span class="heart-icon">🤍</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="product-card">
+        <img src="images/product/powerbank.jpg" alt="Power Bank" class="product-img">
+        <h3 class="product-name">Power Bank 20,000mAh</h3>
+        <p class="product-desc">Fast Charging, Dual USB-C ports, compact and travel-friendly design.</p>
+        <div class="review-box">
+            <div class="stars">★★★★☆</div>
+            <p class="review-text">"Lasts for days! Charges my laptop and phone at the same time."</p>
+            <span class="reviewer-name">— Mariam</span>
+        </div>
+        <div class="price-tag">EGP 1,800</div>
+        <div class="card-actions">
+            <div class="qty-control">
+                <button class="qty-btn minus">−</button>
+                <span class="qty-val">1</span>
+                <button class="qty-btn plus">+</button>
+            </div>
+            <div class="bottom-row">
+                <button class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
+                <span class="heart-icon">🤍</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="product-card">
+        <img src="images/product/charger.jpg" alt="Wall Charger" class="product-img">
+        <h3 class="product-name">Fast Wall Charger 65W</h3>
+        <p class="product-desc">GaN Technology, Dual USB-C & USB-A ports, Overcharge protection, Compact size.</p>
+        <div class="review-box">
+            <div class="stars">★★★★★</div>
+            <p class="review-text">"Super fast charging for my laptop and phone simultaneously. Highly recommend!"</p>
+            <span class="reviewer-name">— Ahmed</span>
+        </div>
+        <div class="price-tag">EGP 1,200</div>
+        <div class="card-actions">
+            <div class="qty-control">
+                <button class="qty-btn minus">−</button>
+                <span class="qty-val">1</span>
+                <button class="qty-btn plus">+</button>
+            </div>
+            <div class="bottom-row">
+                <button class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
+                <span class="heart-icon">🤍</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="product-card">
+        <img src="images/product/wireless-charger.jpg" alt="Wireless Charger" class="product-img">
+        <h3 class="product-name">3-in-1 Wireless Charger</h3>
+        <p class="product-desc">Charges iPhone, Apple Watch, and AirPods at once, Qi-Certified, LED indicator.</p>
+        <div class="review-box">
+            <div class="stars">★★★★☆</div>
+            <p class="review-text">"Very organized for my desk and works perfectly with all my devices."</p>
+            <span class="reviewer-name">— Laila</span>
+        </div>
+        <div class="price-tag">EGP 2,800</div>
+        <div class="card-actions">
+            <div class="qty-control">
+                <button class="qty-btn minus">−</button>
+                <span class="qty-val">1</span>
+                <button class="qty-btn plus">+</button>
+            </div>
+            <div class="bottom-row">
+                <button class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
+                <span class="heart-icon">🤍</span>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<footer class="main-footer">
+    <div class="footer-bottom">© 2025 ElectroStore — All Rights Reserved</div>
+</footer>
+
+<script>
+document.querySelectorAll('.product-card').forEach(card => {
+    const minus = card.querySelector('.minus');
+    const plus = card.querySelector('.plus');
+    const val = card.querySelector('.qty-val');
+    const cartBtn = card.querySelector('.add-to-cart-btn');
+    const heart = card.querySelector('.heart-icon');
+
+    minus.onclick = () => { let v = parseInt(val.textContent); if (v > 1) val.textContent = v - 1; };
+    plus.onclick = () => { val.textContent = parseInt(val.textContent) + 1; };
+
+    cartBtn.onclick = () => {
+        const name = card.querySelector('.product-name').textContent;
+        const priceStr = card.querySelector('.price-tag').textContent.replace(/[^0-9]/g, '');
+        const price = parseInt(priceStr);
+        const qty = parseInt(val.textContent);
+        let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+        const ex = cart.find(i => i.name === name);
+        if (ex) ex.quantity += qty; else cart.push({ id: Date.now(), name, price, quantity: qty });
+        localStorage.setItem('cart', JSON.stringify(cart));
+        const orig = cartBtn.innerHTML;
+        cartBtn.innerHTML = '✓ Added!';
+        cartBtn.style.background = '#00c853';
+        setTimeout(() => { cartBtn.innerHTML = orig; cartBtn.style.background = ''; }, 1500);
+    };
+
+    heart.onclick = () => { heart.textContent = heart.textContent === '🤍' ? '❤️' : '🤍'; };
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smartphones | ElectroStore</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="CSS/main.css">
+    <style>
+        .product { margin: 0 5% 30px; }
+        .page-title { margin-bottom: 0; }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-left">
+        <h1 class="logo" onclick="location.href='index.html'" style="cursor:pointer">Electro<span>Store</span></h1>
+    </div>
+    <nav>
+        <a href="index.html"><i class="fa-solid fa-house"></i> Home</a>
+        <a href="smartphones.html" class="active">Smartphones</a>
+        <a href="Laptops.html">Laptops</a>
+        <a href="Headphones.html">Headphones</a>
+        <a href="Accessories.html">Accessories</a>
+        <a href="cart.html" class="cart-link"><i class="fa-solid fa-cart-shopping"></i> Cart</a>
+    </nav>
+</header>
+
+<div class="back-nav">
+    <button class="back-btn" onclick="history.back()">← Back</button>
+</div>
+
+<section class="page-title">
+    <h2>Smartphones</h2>
+    <p>High Performance Smartphones for Your Everyday Needs</p>
+</section>
+
+<!-- iPhone 17 Pro Max -->
+<article class="product" id="iphone17" style="margin-top:30px;">
+    <nav class="breadcrumb">
+        <a href="index.html">Home</a> / <a href="smartphones.html">Smartphones</a> / <span class="active">Apple iPhone 17 Pro Max</span>
+    </nav>
+    <div class="product-wrapper">
+        <div class="gallery-section">
+            <div class="thumbnails-list">
+                <img src="images/product/phone4.jpg" alt="View 1" onclick="setMain(this, 'main1')">
+                <img src="images/product/phone6.jpg" alt="View 2" onclick="setMain(this, 'main1')">
+                <img src="images/product/phone7.jpg" alt="View 3" class="active-thumb" onclick="setMain(this, 'main1')">
+                <img src="images/product/phone2.jpg" alt="View 4" onclick="setMain(this, 'main1')">
+            </div>
+            <div class="main-display">
+                <img src="images/product/phone2.jpg" class="mainImg" id="main1" alt="iPhone 17 Pro Max">
+            </div>
+        </div>
+        <div class="details-section">
+            <span class="badge-discount">-44%</span>
+            <p class="brand-label">APPLE</p>
+            <h1 class="main-title">Apple iPhone 17 Pro Max 6.9" LTPO Super Retina XDR OLED, 120Hz, A19 Pro, 48MP Camera</h1>
+            <div class="rating-section">
+                <div class="stars"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star half">★</span></div>
+                <span class="rating-text">4.5</span><span class="review-count">(127 reviews)</span>
+            </div>
+            <div class="price-container">
+                <span class="price-now">EGP 61,999</span>
+                <span class="price-before">EGP 109,999</span>
+            </div>
+            <div class="selection-group">
+                <p>Color: <span class="colorName">Cosmic Orange</span></p>
+                <div class="color-options">
+                    <button class="dot active" data-color="Cosmic Orange" style="background:orange;" onclick="setColor(this)"></button>
+                    <button class="dot" data-color="Ocean Blue" style="background:#1e40af;" onclick="setColor(this)"></button>
+                    <button class="dot" data-color="Titanium Silver" style="background:silver;" onclick="setColor(this)"></button>
+                </div>
+            </div>
+            <div class="selection-group">
+                <p>Storage: <strong class="storageSelected">256GB</strong></p>
+                <div class="storage-options">
+                    <button class="storage-btn active" onclick="setStorage(this)">256GB</button>
+                    <button class="storage-btn disabled" disabled>512GB</button>
+                </div>
+            </div>
+            <div class="action-bar">
+                <div class="qty-box">
+                    <button class="decrease" onclick="changeQtyPhone(this, -1)">−</button>
+                    <span class="quantity">1</span>
+                    <button class="increase" onclick="changeQtyPhone(this, 1)">+</button>
+                </div>
+                <button class="add-to-cart-large" onclick="addPhoneToCart(this, 'Apple iPhone 17 Pro Max', 61999)">
+                    <i class="fa-solid fa-cart-plus"></i> Add To Cart
+                </button>
+                <button class="wish-btn" onclick="this.textContent = this.textContent === '🤍' ? '❤️' : '🤍'">🤍</button>
+            </div>
+        </div>
+    </div>
+    <div class="reviews-section">
+        <h3>Customer Reviews</h3>
+        <div class="review-item"><div class="review-stars">★★★★★</div><p class="review-text">"Absolutely amazing phone! The camera quality is outstanding and the A19 Pro chip is incredibly fast."</p><p class="reviewer-name">— Sarah</p></div>
+        <div class="review-item"><div class="review-stars">★★★★☆</div><p class="review-text">"Great phone overall. Battery life is excellent and the screen is gorgeous. The Cosmic Orange color is stunning!"</p><p class="reviewer-name">— Michael</p></div>
+        <div class="review-item"><div class="review-stars">★★★★★</div><p class="review-text">"Best iPhone yet! The larger 6.9" screen is perfect for watching videos."</p><p class="reviewer-name">— Emma</p></div>
+    </div>
+</article>
+
+<!-- iPhone 15 Pro Max -->
+<article class="product" id="iphone15">
+    <nav class="breadcrumb">
+        <a href="index.html">Home</a> / <a href="smartphones.html">Smartphones</a> / <span class="active">Apple iPhone 15 Pro Max</span>
+    </nav>
+    <div class="product-wrapper">
+        <div class="gallery-section">
+            <div class="thumbnails-list">
+                <img src="images/product/phone15.jpg" alt="View 1" class="active-thumb" onclick="setMain(this, 'main2')">
+                <img src="images/product/phone16.jpg" alt="View 2" onclick="setMain(this, 'main2')">
+                <img src="images/product/phone12.jpg" alt="View 3" onclick="setMain(this, 'main2')">
+                <img src="images/product/phone13.jpg" alt="View 4" onclick="setMain(this, 'main2')">
+            </div>
+            <div class="main-display">
+                <img src="images/product/phone15.jpg" class="mainImg" id="main2" alt="iPhone 15 Pro Max">
+            </div>
+        </div>
+        <div class="details-section">
+            <span class="badge-discount">-35%</span>
+            <p class="brand-label">APPLE</p>
+            <h1 class="main-title">Apple iPhone 15 Pro Max 6.7" Super Retina XDR OLED, 120Hz, A17 Pro, 48MP Camera, IP68</h1>
+            <div class="rating-section">
+                <div class="stars"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star half">★</span></div>
+                <span class="rating-text">4.4</span><span class="review-count">(203 reviews)</span>
+            </div>
+            <div class="price-container">
+                <span class="price-now">EGP 48,999</span>
+                <span class="price-before">EGP 74,999</span>
+            </div>
+            <div class="selection-group">
+                <p>Color: <span class="colorName">White</span></p>
+                <div class="color-options">
+                    <button class="dot active" data-color="White" style="background:white;border:2px solid #ddd;" onclick="setColor(this)"></button>
+                    <button class="dot" data-color="Black" style="background:#1a1a1a;" onclick="setColor(this)"></button>
+                    <button class="dot" data-color="Purple" style="background:purple;" onclick="setColor(this)"></button>
+                    <button class="dot" data-color="Gold" style="background:gold;" onclick="setColor(this)"></button>
+                </div>
+            </div>
+            <div class="selection-group">
+                <p>Storage: <strong class="storageSelected">256GB</strong></p>
+                <div class="storage-options">
+                    <button class="storage-btn active" onclick="setStorage(this)">256GB</button>
+                    <button class="storage-btn" onclick="setStorage(this)">512GB</button>
+                    <button class="storage-btn disabled" disabled>1TB</button>
+                </div>
+            </div>
+            <div class="action-bar">
+                <div class="qty-box">
+                    <button class="decrease" onclick="changeQtyPhone(this, -1)">−</button>
+                    <span class="quantity">1</span>
+                    <button class="increase" onclick="changeQtyPhone(this, 1)">+</button>
+                </div>
+                <button class="add-to-cart-large" onclick="addPhoneToCart(this, 'Apple iPhone 15 Pro Max', 48999)">
+                    <i class="fa-solid fa-cart-plus"></i> Add To Cart
+                </button>
+                <button class="wish-btn" onclick="this.textContent = this.textContent === '🤍' ? '❤️' : '🤍'">🤍</button>
+            </div>
+        </div>
+    </div>
+    <div class="reviews-section">
+        <h3>Customer Reviews</h3>
+        <div class="review-item"><div class="review-stars">★★★★★</div><p class="review-text">"Reliable and powerful! The A17 Pro chip handles everything smoothly. Camera quality is exceptional in all lighting."</p><p class="reviewer-name">— Mohammed</p></div>
+        <div class="review-item"><div class="review-stars">★★★★☆</div><p class="review-text">"Great upgrade from my iPhone 13. The white color is sleek and the battery life has been impressive."</p><p class="reviewer-name">— Rachel</p></div>
+    </div>
+</article>
+
+<!-- Samsung Galaxy S24 Ultra -->
+<article class="product" id="galaxys24">
+    <nav class="breadcrumb">
+        <a href="index.html">Home</a> / <a href="smartphones.html">Smartphones</a> / <span class="active">Samsung Galaxy S24 Ultra</span>
+    </nav>
+    <div class="product-wrapper">
+        <div class="gallery-section">
+            <div class="thumbnails-list">
+                <img src="images/product/samsung1.jpg" alt="View 1" class="active-thumb" onclick="setMain(this, 'main3')">
+                <img src="images/product/samsung2.jpg" alt="View 2" onclick="setMain(this, 'main3')">
+                <img src="images/product/samsung3.jpg" alt="View 3" onclick="setMain(this, 'main3')">
+                <img src="images/product/samsung4.jpg" alt="View 4" onclick="setMain(this, 'main3')">
+            </div>
+            <div class="main-display">
+                <img src="images/product/samsung3.jpg" class="mainImg" id="main3" alt="Samsung S24 Ultra">
+            </div>
+        </div>
+        <div class="details-section">
+            <span class="badge-discount">-35%</span>
+            <p class="brand-label">SAMSUNG</p>
+            <h1 class="main-title">Samsung Galaxy S24 Ultra 6.8" Dynamic AMOLED 2X, 200MP Camera, Snapdragon 8 Gen 3, S Pen</h1>
+            <div class="rating-section">
+                <div class="stars"><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star filled">★</span><span class="star half">★</span></div>
+                <span class="rating-text">4.6</span><span class="review-count">(156 reviews)</span>
+            </div>
+            <div class="price-container">
+                <span class="price-now">EGP 58,999</span>
+                <span class="price-before">EGP 90,999</span>
+            </div>
+            <div class="selection-group">
+                <p>Color: <span class="colorName">Titanium Gray</span></p>
+                <div class="color-options">
+                    <button class="dot active" data-color="Titanium Gray" style="background:linear-gradient(145deg,#666,#999);" onclick="setColor(this)"></button>
+                    <button class="dot" data-color="Phantom Black" style="background:#1a1a1a;" onclick="setColor(this)"></button>
+                    <button class="dot" data-color="Violet" style="background:#8b5cf6;" onclick="setColor(this)"></button>
+                    <button class="dot" data-color="Amber Yellow" style="background:#fbbf24;" onclick="setColor(this)"></button>
+                </div>
+            </div>
+            <div class="selection-group">
+                <p>Storage: <strong class="storageSelected">256GB</strong></p>
+                <div class="storage-options">
+                    <button class="storage-btn active" onclick="setStorage(this)">256GB</button>
+                    <button class="storage-btn" onclick="setStorage(this)">512GB</button>
+                    <button class="storage-btn" onclick="setStorage(this)">1TB</button>
+                </div>
+            </div>
+            <div class="action-bar">
+                <div class="qty-box">
+                    <button class="decrease" onclick="changeQtyPhone(this, -1)">−</button>
+                    <span class="quantity">1</span>
+                    <button class="increase" onclick="changeQtyPhone(this, 1)">+</button>
+                </div>
+                <button class="add-to-cart-large" onclick="addPhoneToCart(this, 'Samsung Galaxy S24 Ultra', 58999)">
+                    <i class="fa-solid fa-cart-plus"></i> Add To Cart
+                </button>
+                <button class="wish-btn" onclick="this.textContent = this.textContent === '🤍' ? '❤️' : '🤍'">🤍</button>
+            </div>
+        </div>
+    </div>
+    <div class="reviews-section">
+        <h3>Customer Reviews</h3>
+        <div class="review-item"><div class="review-stars">★★★★★</div><p class="review-text">"The 200MP camera is absolutely insane! Best photos I've ever seen on a phone."</p><p class="reviewer-name">— Ahmed</p></div>
+        <div class="review-item"><div class="review-stars">★★★★☆</div><p class="review-text">"Best Android phone on the market! Display is gorgeous and performance is blazing fast."</p><p class="reviewer-name">— Jennifer</p></div>
+    </div>
+</article>
+
+<footer class="main-footer" style="margin-top:40px">
+    <div class="footer-bottom">© 2025 ElectroStore — All Rights Reserved</div>
+</footer>
+
+<script>
+function setMain(thumb, mainId) {
+    const allThumbs = thumb.closest('.thumbnails-list').querySelectorAll('img');
+    allThumbs.forEach(t => t.classList.remove('active-thumb'));
+    thumb.classList.add('active-thumb');
+    document.getElementById(mainId).src = thumb.src;
+}
+
+function setColor(btn) {
+    const group = btn.closest('.color-options');
+    group.querySelectorAll('.dot').forEach(d => d.classList.remove('active'));
+    btn.classList.add('active');
+    const label = btn.closest('.selection-group').querySelector('.colorName');
+    if (label) label.textContent = btn.dataset.color;
+}
+
+function setStorage(btn) {
+    const group = btn.closest('.storage-options');
+    group.querySelectorAll('.storage-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const label = btn.closest('.selection-group').querySelector('.storageSelected');
+    if (label) label.textContent = btn.textContent;
+}
+
+function changeQtyPhone(btn, delta) {
+    const qtyEl = btn.closest('.qty-box').querySelector('.quantity');
+    let val = parseInt(qtyEl.textContent) + delta;
+    if (val < 1) val = 1;
+    qtyEl.textContent = val;
+}
+
+function addPhoneToCart(btn, name, price) {
+    const qtyEl = btn.closest('.action-bar').querySelector('.quantity');
+    const qty = parseInt(qtyEl.textContent);
+    let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+    const ex = cart.find(i => i.name === name);
+    if (ex) ex.quantity += qty; else cart.push({ id: Date.now(), name, price, quantity: qty });
+    localStorage.setItem('cart', JSON.stringify(cart));
+    const orig = btn.innerHTML;
+    btn.innerHTML = '✓ Added to Cart!';
+    btn.style.background = '#00c853';
+    setTimeout(() => { btn.innerHTML = orig; btn.style.background = ''; }, 1800);
+}
+</script>
+</body>
+</html>

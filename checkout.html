@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout | ElectroStore</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="CSS/main.css">
+    <style>
+        body { background: var(--light-bg); }
+
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+        /* ===== Payment Methods ===== */
+        .payment-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .pay-option {
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 16px 12px;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            background: white;
+            position: relative;
+            user-select: none;
+        }
+
+        .pay-option:hover {
+            border-color: var(--primary);
+            box-shadow: 0 4px 15px rgba(255,107,53,0.15);
+            transform: translateY(-2px);
+        }
+
+        .pay-option.selected {
+            border-color: var(--primary);
+            background: rgba(255,107,53,0.06);
+            box-shadow: 0 0 0 3px rgba(255,107,53,0.15);
+        }
+
+        .pay-option .check-badge {
+            display: none;
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            width: 22px;
+            height: 22px;
+            background: var(--primary);
+            border-radius: 50%;
+            color: white;
+            font-size: 11px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .pay-option.selected .check-badge { display: flex; }
+
+        .pay-option i {
+            font-size: 28px;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .pay-option[data-method="card"] i    { color: #2563eb; }
+        .pay-option[data-method="cash"] i    { color: #16a34a; }
+        .pay-option[data-method="vodafone"] i { color: #e11d48; }
+        .pay-option[data-method="instapay"] i { color: #7c3aed; }
+        .pay-option[data-method="fawry"] i   { color: #f59e0b; }
+        .pay-option[data-method="installment"] i { color: #0891b2; }
+
+        .pay-option .pay-label { font-size: 13px; font-weight: 600; color: var(--text); }
+        .pay-option .pay-sub   { font-size: 11px; color: var(--gray); margin-top: 3px; }
+
+        /* Payment detail panels */
+        .pay-panel { display: none; }
+        .pay-panel.active { display: block; }
+
+        /* Installment grid */
+        .installment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .install-card {
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            padding: 14px 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            background: white;
+        }
+
+        .install-card:hover  { border-color: var(--primary); }
+        .install-card.selected { border-color: var(--primary); background: rgba(255,107,53,0.05); }
+        .install-card .months  { font-size: 22px; font-weight: 800; color: var(--primary); }
+        .install-card .ilabel  { font-size: 11px; color: var(--gray); }
+        .install-card .monthly { font-size: 13px; font-weight: 700; color: var(--dark); margin-top: 4px; }
+
+        .bank-logos { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+        .bank-tag { background: var(--light-bg); border: 1px solid var(--border); border-radius: 6px; padding: 6px 12px; font-size: 12px; font-weight: 600; color: var(--text); }
+
+        /* Wallet info box */
+        .wallet-info-box {
+            background: var(--light-bg);
+            border: 2px dashed var(--border);
+            border-radius: 12px;
+            padding: 22px;
+            text-align: center;
+            margin-bottom: 16px;
+        }
+
+        .wallet-info-box .wallet-number { font-size: 26px; font-weight: 800; color: var(--dark); letter-spacing: 2px; margin: 10px 0; }
+        .wallet-info-box p { font-size: 13px; color: var(--gray); margin: 0; }
+
+        .copy-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 9px 20px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 12px;
+            font-family: 'Poppins', sans-serif;
+            transition: var(--transition);
+        }
+        .copy-btn:hover { background: var(--primary-light); }
+
+        /* Fawry */
+        .fawry-box { background: #fffbeb; border: 2px solid #fbbf24; border-radius: 12px; padding: 22px; margin-bottom: 16px; text-align: center; }
+        .fawry-code { font-size: 32px; font-weight: 900; letter-spacing: 4px; color: #f59e0b; margin: 10px 0; }
+
+        /* Cash */
+        .cash-box { background: #f0fdf4; border: 2px solid #86efac; border-radius: 12px; padding: 22px; margin-bottom: 16px; text-align: center; }
+        .cash-box i  { color: #16a34a; font-size: 40px; margin-bottom: 12px; display: block; }
+        .cash-box h4 { font-size: 18px; font-weight: 700; color: #166534; margin-bottom: 8px; }
+        .cash-box p  { font-size: 13px; color: #15803d; margin: 0; line-height: 1.7; }
+
+        /* Alert boxes */
+        .alert-warning { background: #fff1f2; border: 1px solid #fca5a5; border-radius: 8px; padding: 12px; font-size: 12px; color: #991b1b; }
+        .alert-info    { background: #f5f3ff; border: 1px solid #c4b5fd; border-radius: 8px; padding: 12px; font-size: 12px; color: #5b21b6; }
+        .alert-note    { background: var(--light-bg); border-radius: 8px; padding: 12px; font-size: 13px; color: var(--gray); }
+
+        /* Success overlay */
+        .success-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.8); z-index: 9999; justify-content: center; align-items: center; }
+        .success-box { background: white; border-radius: 20px; padding: 50px 40px; text-align: center; max-width: 460px; width: 90%; border-top: 5px solid #00c853; animation: popIn 0.4s cubic-bezier(.175,.885,.32,1.275); }
+
+        @keyframes popIn { from { transform: scale(0.7); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+        .success-box i   { font-size: 64px; color: #00c853; margin-bottom: 16px; display: block; }
+        .success-box h2  { font-size: 26px; color: var(--dark); margin-bottom: 8px; }
+        .success-box p   { color: var(--gray); margin-bottom: 10px; font-size: 14px; }
+        .success-box .order-id { font-size: 13px; background: var(--light-bg); padding: 10px 20px; border-radius: 8px; font-weight: 700; color: var(--primary); display: inline-block; margin-bottom: 20px; }
+        .success-box a   { display: inline-block; padding: 14px 32px; background: var(--primary); color: white; border-radius: 8px; font-weight: 700; transition: var(--transition); }
+        .success-box a:hover { background: var(--primary-light); }
+
+        @media(max-width: 600px) {
+            .form-row { grid-template-columns: 1fr; }
+            .payment-methods { grid-template-columns: repeat(3, 1fr); }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-left">
+        <h1 class="logo" onclick="location.href='index.html'" style="cursor:pointer">Electro<span>Store</span></h1>
+    </div>
+    <nav>
+        <a href="index.html"><i class="fa-solid fa-house"></i> Home</a>
+        <a href="cart.html"><i class="fa-solid fa-cart-shopping"></i> Cart</a>
+    </nav>
+</header>
+
+<div class="checkout-page">
+    <h1>Check<span>out</span></h1>
+
+    <!-- ===== Billing ===== -->
+    <div class="checkout-section">
+        <h2>Billing Details</h2>
+        <div class="form-row">
+            <div class="form-group">
+                <label>Full Name</label>
+                <input type="text" id="name" placeholder="Ahmed Mohamed" required>
+            </div>
+            <div class="form-group">
+                <label>Email Address</label>
+                <input type="email" id="email" placeholder="ahmed@example.com" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Delivery Address</label>
+            <input type="text" id="address" placeholder="123 Street, Cairo, Egypt" required>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <label>Phone Number</label>
+                <input type="tel" id="phone" placeholder="+20 100 000 0000" required>
+            </div>
+            <div class="form-group">
+                <label>City</label>
+                <input type="text" id="city" placeholder="Cairo" required>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== Payment ===== -->
+    <div class="checkout-section">
+        <h2>Payment Method</h2>
+
+        <div class="payment-methods">
+            <div class="pay-option selected" data-method="card" onclick="selectMethod('card')">
+                <span class="check-badge"><i class="fa-solid fa-check"></i></span>
+                <i class="fa-solid fa-credit-card"></i>
+                <div class="pay-label">Credit / Debit</div>
+                <div class="pay-sub">Visa · Mastercard</div>
+            </div>
+
+            <div class="pay-option" data-method="cash" onclick="selectMethod('cash')">
+                <span class="check-badge"><i class="fa-solid fa-check"></i></span>
+                <i class="fa-solid fa-money-bill-wave"></i>
+                <div class="pay-label">Cash on Delivery</div>
+                <div class="pay-sub">Pay when received</div>
+            </div>
+
+            <div class="pay-option" data-method="vodafone" onclick="selectMethod('vodafone')">
+                <span class="check-badge"><i class="fa-solid fa-check"></i></span>
+                <i class="fa-solid fa-mobile-screen-button"></i>
+                <div class="pay-label">Vodafone Cash</div>
+                <div class="pay-sub">Mobile wallet</div>
+            </div>
+
+            <div class="pay-option" data-method="instapay" onclick="selectMethod('instapay')">
+                <span class="check-badge"><i class="fa-solid fa-check"></i></span>
+                <i class="fa-solid fa-bolt"></i>
+                <div class="pay-label">InstaPay</div>
+                <div class="pay-sub">Instant transfer</div>
+            </div>
+
+            <div class="pay-option" data-method="fawry" onclick="selectMethod('fawry')">
+                <span class="check-badge"><i class="fa-solid fa-check"></i></span>
+                <i class="fa-solid fa-store"></i>
+                <div class="pay-label">Fawry</div>
+                <div class="pay-sub">Pay at any branch</div>
+            </div>
+
+            <div class="pay-option" data-method="installment" onclick="selectMethod('installment')">
+                <span class="check-badge"><i class="fa-solid fa-check"></i></span>
+                <i class="fa-solid fa-calendar-days"></i>
+                <div class="pay-label">Installments</div>
+                <div class="pay-sub">Up to 36 months</div>
+            </div>
+        </div>
+
+        <!-- Panel: Credit Card -->
+        <div class="pay-panel active" id="panel-card">
+            <div class="form-group">
+                <label>Card Number</label>
+                <input type="text" id="card" placeholder="1234 5678 9012 3456" maxlength="19">
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Expiry Date</label>
+                    <input type="text" id="expiry" placeholder="MM/YY" maxlength="5">
+                </div>
+                <div class="form-group">
+                    <label>CVV</label>
+                    <input type="text" id="cvv" placeholder="123" maxlength="3">
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Cardholder Name</label>
+                <input type="text" id="card-name" placeholder="AHMED MOHAMED">
+            </div>
+            <div style="display:flex;gap:12px;align-items:center;margin-top:8px;padding:14px;background:var(--light-bg);border-radius:8px;flex-wrap:wrap;">
+                <i class="fa-brands fa-cc-visa" style="font-size:30px;color:#1a1f71"></i>
+                <i class="fa-brands fa-cc-mastercard" style="font-size:30px;color:#eb001b"></i>
+                <i class="fa-brands fa-cc-amex" style="font-size:30px;color:#2e77bc"></i>
+                <span style="font-size:12px;color:var(--gray);margin-left:4px"><i class="fa-solid fa-lock" style="color:#16a34a"></i> &nbsp;256-bit SSL Encryption</span>
+            </div>
+        </div>
+
+        <!-- Panel: Cash on Delivery -->
+        <div class="pay-panel" id="panel-cash">
+            <div class="cash-box">
+                <i class="fa-solid fa-hand-holding-dollar"></i>
+                <h4>Cash on Delivery</h4>
+                <p>
+                    Pay with cash when your order arrives at your doorstep.<br>
+                    Our delivery agent will collect the full amount upon delivery.<br><br>
+                    <strong>Note:</strong> Delivery fee EGP 50 — Free on orders above EGP 3,000.
+                </p>
+            </div>
+            <div class="alert-note">
+                <i class="fa-solid fa-circle-info" style="color:var(--primary)"></i>
+                &nbsp;Please have the <strong>exact amount</strong> ready. Our agent may not always have change.
+            </div>
+        </div>
+
+        <!-- Panel: Vodafone Cash -->
+        <div class="pay-panel" id="panel-vodafone">
+            <div class="wallet-info-box">
+                <p style="font-size:14px;font-weight:700;color:#e11d48">
+                    <i class="fa-solid fa-circle-dot"></i> &nbsp;Vodafone Cash Number
+                </p>
+                <div class="wallet-number">010 1234 5678</div>
+                <p>Transfer the exact order total to this Vodafone Cash number, then enter the reference number below.</p>
+                <button class="copy-btn" onclick="copyText('010 1234 5678', this)">
+                    <i class="fa-solid fa-copy"></i> &nbsp;Copy Number
+                </button>
+            </div>
+            <div class="form-group">
+                <label>Transfer Reference Number</label>
+                <input type="text" id="vf-ref" placeholder="e.g. VF-20250305-XXXXX">
+            </div>
+            <div class="alert-warning">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                &nbsp;Your order will be confirmed only after we verify the transfer (usually within 1 hour).
+            </div>
+        </div>
+
+        <!-- Panel: InstaPay -->
+        <div class="pay-panel" id="panel-instapay">
+            <div class="wallet-info-box">
+                <p style="font-size:14px;font-weight:700;color:#7c3aed">
+                    <i class="fa-solid fa-bolt"></i> &nbsp;InstaPay Address
+                </p>
+                <div class="wallet-number" style="font-size:20px">electrostore@instapay</div>
+                <p>Open the InstaPay app and transfer the exact total to this address.</p>
+                <button class="copy-btn" onclick="copyText('electrostore@instapay', this)" style="background:#7c3aed">
+                    <i class="fa-solid fa-copy"></i> &nbsp;Copy Address
+                </button>
+            </div>
+            <div class="form-group">
+                <label>InstaPay Transaction ID</label>
+                <input type="text" id="ip-ref" placeholder="Paste your transaction ID here">
+            </div>
+            <div class="alert-info">
+                <i class="fa-solid fa-clock"></i>
+                &nbsp;Orders are confirmed within 15 minutes after transfer verification.
+            </div>
+        </div>
+
+        <!-- Panel: Fawry -->
+        <div class="pay-panel" id="panel-fawry">
+            <div class="fawry-box">
+                <p style="font-size:13px;color:#92400e;margin:0 0 4px;font-weight:600">Your Fawry Reference Code</p>
+                <div class="fawry-code" id="fawry-code">Loading...</div>
+                <p style="font-size:12px;color:#78350f;margin:0">
+                    Take this code to any Fawry branch, MyFawry app, or ATM.<br>
+                    <strong>Valid for 48 hours only.</strong>
+                </p>
+                <button class="copy-btn" onclick="copyText(document.getElementById('fawry-code').textContent, this)" style="background:#f59e0b;color:#1a1a1a;margin-top:12px">
+                    <i class="fa-solid fa-copy"></i> &nbsp;Copy Code
+                </button>
+            </div>
+            <div class="alert-note">
+                <i class="fa-solid fa-location-dot" style="color:var(--primary)"></i>
+                &nbsp;Find nearest branch at <a href="https://www.fawry.com" target="_blank" style="color:var(--primary);font-weight:600">fawry.com</a>
+                &nbsp;or call <strong>16668</strong>.
+            </div>
+        </div>
+
+        <!-- Panel: Installments -->
+        <div class="pay-panel" id="panel-installment">
+            <div class="bank-logos">
+                <span class="bank-tag">🏦 CIB</span>
+                <span class="bank-tag">🏦 NBE</span>
+                <span class="bank-tag">🏦 QNB</span>
+                <span class="bank-tag">🏦 HSBC</span>
+                <span class="bank-tag">🏦 Banque Misr</span>
+                <span class="bank-tag">🏦 Alex Bank</span>
+                <span class="bank-tag">🏦 Banque du Caire</span>
+                <span class="bank-tag">🏦 Arab African</span>
+            </div>
+            <p style="font-size:13px;color:var(--gray);margin-bottom:16px">Choose your installment plan — 0% interest with select partner banks:</p>
+            <div class="installment-grid" id="install-grid"></div>
+            <div class="form-group">
+                <label>Card Number</label>
+                <input type="text" id="inst-card" placeholder="1234 5678 9012 3456" maxlength="19">
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Expiry Date</label>
+                    <input type="text" id="inst-expiry" placeholder="MM/YY" maxlength="5">
+                </div>
+                <div class="form-group">
+                    <label>Issuing Bank</label>
+                    <input type="text" id="inst-bank" placeholder="e.g. CIB, NBE, QNB">
+                </div>
+            </div>
+        </div>
+
+        <button class="confirm-btn" onclick="confirmOrder()" id="confirm-btn">
+            <i class="fa-solid fa-lock"></i> &nbsp;Pay by Card
+        </button>
+    </div>
+
+    <!-- ===== Order Summary ===== -->
+    <div class="checkout-section">
+        <h2>Order Summary</h2>
+        <div id="orderSummary">
+            <p style="color:var(--gray)">Loading your order...</p>
+        </div>
+    </div>
+</div>
+
+<!-- Success Modal -->
+<div class="success-overlay" id="success-overlay">
+    <div class="success-box">
+        <i class="fa-solid fa-circle-check"></i>
+        <h2>Order Confirmed! 🎉</h2>
+        <p>Thank you for shopping at <strong>ElectroStore</strong>.</p>
+        <p>Your order will arrive within <strong>2–5 business days</strong>.</p>
+        <div class="order-id" id="order-id-display">Order #000000</div>
+        <a href="index.html">Continue Shopping</a>
+    </div>
+</div>
+
+<script>
+function getCart() { return JSON.parse(localStorage.getItem('cart') || '[]'); }
+let currentMethod = 'card';
+let cartTotal = 0;
+
+window.onload = () => {
+    loadSummary();
+    const fawryCode = Math.floor(100000000 + Math.random() * 900000000).toString();
+    document.getElementById('fawry-code').textContent = fawryCode;
+
+    // Card formatting
+    document.getElementById('card').oninput = function() {
+        this.value = this.value.replace(/\D/g,'').replace(/(.{4})/g,'$1 ').trim().slice(0,19);
+    };
+    document.getElementById('expiry').oninput = function() {
+        this.value = this.value.replace(/\D/g,'').replace(/^(\d{2})/,'$1/').slice(0,5);
+    };
+    document.getElementById('inst-card').oninput = function() {
+        this.value = this.value.replace(/\D/g,'').replace(/(.{4})/g,'$1 ').trim().slice(0,19);
+    };
+    document.getElementById('inst-expiry').oninput = function() {
+        this.value = this.value.replace(/\D/g,'').replace(/^(\d{2})/,'$1/').slice(0,5);
+    };
+};
+
+function loadSummary() {
+    const cart = getCart();
+    const summary = document.getElementById('orderSummary');
+    if (!cart.length) {
+        summary.innerHTML = '<p>Your cart is empty. <a href="index.html" style="color:var(--primary)">Go back shopping</a></p>';
+        return;
+    }
+    let html = '';
+    let subtotal = 0;
+    cart.forEach(item => {
+        const t = item.price * item.quantity;
+        subtotal += t;
+        html += `<div style="display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--border)">
+            <span><strong>${item.name}</strong> <span style="color:var(--gray)">× ${item.quantity}</span></span>
+            <span style="color:var(--primary);font-weight:700">EGP ${t.toLocaleString()}</span>
+        </div>`;
+    });
+    const tax   = Math.round(subtotal * 0.14);
+    const total = subtotal + tax;
+    cartTotal   = total;
+    html += `<div style="margin-top:16px">
+        <div style="display:flex;justify-content:space-between;margin-bottom:8px;font-size:14px;color:var(--gray)"><span>Subtotal</span><span>EGP ${subtotal.toLocaleString()}</span></div>
+        <div style="display:flex;justify-content:space-between;margin-bottom:8px;font-size:14px;color:var(--gray)"><span>Tax (14%)</span><span>EGP ${tax.toLocaleString()}</span></div>
+        <div style="display:flex;justify-content:space-between;padding-top:12px;border-top:2px solid var(--border);font-size:20px;font-weight:800">
+            <span>Total</span><span style="color:var(--primary)">EGP ${total.toLocaleString()}</span>
+        </div>
+    </div>`;
+    summary.innerHTML = html;
+    buildInstallments(total);
+}
+
+function buildInstallments(total) {
+    const plans = [3, 6, 12, 18, 24, 36];
+    const grid  = document.getElementById('install-grid');
+    grid.innerHTML = '';
+    plans.forEach((months, i) => {
+        const monthly = Math.ceil(total / months);
+        const card = document.createElement('div');
+        card.className = 'install-card' + (i === 1 ? ' selected' : '');
+        card.innerHTML = `
+            <div class="months">${months}</div>
+            <div class="ilabel">months</div>
+            <div class="monthly">EGP ${monthly.toLocaleString()}/mo</div>`;
+        card.onclick = () => {
+            document.querySelectorAll('.install-card').forEach(c => c.classList.remove('selected'));
+            card.classList.add('selected');
+        };
+        grid.appendChild(card);
+    });
+}
+
+function selectMethod(method) {
+    currentMethod = method;
+    document.querySelectorAll('.pay-option').forEach(el => el.classList.remove('selected'));
+    document.querySelector(`.pay-option[data-method="${method}"]`).classList.add('selected');
+    document.querySelectorAll('.pay-panel').forEach(p => p.classList.remove('active'));
+    document.getElementById('panel-' + method).classList.add('active');
+
+    const btnLabels = {
+        card:        '🔒 Pay by Card',
+        cash:        '💵 Confirm — Pay on Delivery',
+        vodafone:    '📱 Confirm Vodafone Cash Order',
+        instapay:    '⚡ Confirm InstaPay Order',
+        fawry:       '🏪 Confirm & Get Fawry Code',
+        installment: '📅 Confirm Installment Order'
+    };
+    const btn = document.getElementById('confirm-btn');
+    btn.innerHTML = `<i class="fa-solid fa-check"></i> &nbsp;${btnLabels[method]}`;
+}
+
+function copyText(text, btn) {
+    navigator.clipboard.writeText(text).then(() => {
+        const orig = btn.innerHTML;
+        btn.innerHTML = '✓ Copied!';
+        setTimeout(() => btn.innerHTML = orig, 1600);
+    });
+}
+
+function confirmOrder() {
+    const name    = document.getElementById('name').value.trim();
+    const email   = document.getElementById('email').value.trim();
+    const address = document.getElementById('address').value.trim();
+    const phone   = document.getElementById('phone').value.trim();
+    const cart    = getCart();
+
+    if (!name || !email || !address || !phone) {
+        alert('⚠️ Please fill in all billing details.');
+        return;
+    }
+    if (!cart.length) { alert('Your cart is empty!'); return; }
+
+    // Method validation
+    if (currentMethod === 'card') {
+        const card = document.getElementById('card').value.trim();
+        if (!card || card.replace(/\s/g,'').length < 16) { alert('⚠️ Please enter a valid card number.'); return; }
+    } else if (currentMethod === 'vodafone') {
+        if (!document.getElementById('vf-ref').value.trim()) { alert('⚠️ Please enter your Vodafone Cash reference.'); return; }
+    } else if (currentMethod === 'instapay') {
+        if (!document.getElementById('ip-ref').value.trim()) { alert('⚠️ Please enter your InstaPay transaction ID.'); return; }
+    } else if (currentMethod === 'installment') {
+        const card = document.getElementById('inst-card').value.trim();
+        if (!card || card.replace(/\s/g,'').length < 16) { alert('⚠️ Please enter your card number.'); return; }
+    }
+
+    const orderId = 'ES-' + Date.now().toString().slice(-8);
+    document.getElementById('order-id-display').textContent = `Order #${orderId}`;
+    localStorage.removeItem('cart');
+    document.getElementById('success-overlay').style.display = 'flex';
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Headphones | ElectroStore</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="CSS/main.css">
+</head>
+<body>
+
+<header>
+    <div class="header-left">
+        <h1 class="logo" onclick="location.href='index.html'" style="cursor:pointer">Electro<span>Store</span></h1>
+    </div>
+    <nav>
+        <a href="index.html"><i class="fa-solid fa-house"></i> Home</a>
+        <a href="smartphones.html">Smartphones</a>
+        <a href="Laptops.html">Laptops</a>
+        <a href="Headphones.html" class="active">Headphones</a>
+        <a href="Accessories.html">Accessories</a>
+        <a href="cart.html" class="cart-link"><i class="fa-solid fa-cart-shopping"></i> Cart</a>
+    </nav>
+</header>
+
+<div class="back-nav">
+    <button class="back-btn" onclick="history.back()">← Back</button>
+</div>
+
+<section class="page-title">
+    <h2>Headphones</h2>
+    <p>Immerse Yourself in Pure Sound</p>
+</section>
+
+<section class="product-grid">
+
+    <div class="product-card">
+        <img src="images/product/airpods4.jpg" alt="AirPods 4" class="product-img">
+        <h3 class="product-name">Apple AirPods 4</h3>
+        <p class="product-desc">Active Noise Cancellation, Personalized Spatial Audio, H2 chip, USB-C charging.</p>
+        <div class="review-box">
+            <div class="stars">★★★★★</div>
+            <p class="review-text">"The sound quality is exceptional and the fit is perfect for long hours."</p>
+            <span class="reviewer-name">— Noor</span>
+        </div>
+        <div class="price-tag">EGP 8,000</div>
+        <div class="card-actions">
+            <div class="qty-control">
+                <button class="qty-btn minus">−</button>
+                <span class="qty-val">1</span>
+                <button class="qty-btn plus">+</button>
+            </div>
+            <div class="bottom-row">
+                <button class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
+                <span class="heart-icon">🤍</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="product-card">
+        <img src="images/product/sony-xm5.jpg" alt="Sony XM5" class="product-img">
+        <h3 class="product-name">Sony WH-1000XM5</h3>
+        <p class="product-desc">Industry-leading Noise Canceling, 30-hour battery life, Crystal clear hands-free calling.</p>
+        <div class="review-box">
+            <div class="stars">★★★★★</div>
+            <p class="review-text">"Best noise cancellation on the market. Great for traveling and office work."</p>
+            <span class="reviewer-name">— Mona</span>
+        </div>
+        <div class="price-tag">EGP 15,000</div>
+        <div class="card-actions">
+            <div class="qty-control">
+                <button class="qty-btn minus">−</button>
+                <span class="qty-val">1</span>
+                <button class="qty-btn plus">+</button>
+            </div>
+            <div class="bottom-row">
+                <button class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
+                <span class="heart-icon">🤍</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="product-card">
+        <img src="images/product/bose-qc45.jpg" alt="Bose QC45" class="product-img">
+        <h3 class="product-name">Bose QuietComfort 45</h3>
+        <p class="product-desc">Iconic quiet, comfort, and sound. TriPort acoustic architecture for high-fidelity audio.</p>
+        <div class="review-box">
+            <div class="stars">★★★★☆</div>
+            <p class="review-text">"Extremely comfortable for long flights. The quiet mode is magical."</p>
+            <span class="reviewer-name">— Sarah</span>
+        </div>
+        <div class="price-tag">EGP 14,500</div>
+        <div class="card-actions">
+            <div class="qty-control">
+                <button class="qty-btn minus">−</button>
+                <span class="qty-val">1</span>
+                <button class="qty-btn plus">+</button>
+            </div>
+            <div class="bottom-row">
+                <button class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
+                <span class="heart-icon">🤍</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="product-card">
+        <img src="images/product/beats-studio3.jpg" alt="Beats Studio3" class="product-img">
+        <h3 class="product-name">Beats Studio3 Wireless</h3>
+        <p class="product-desc">Pure Adaptive Noise Canceling, Apple W1 chip for Class 1 Bluetooth connectivity.</p>
+        <div class="review-box">
+            <div class="stars">★★★★☆</div>
+            <p class="review-text">"Powerful bass and great design. Perfect for gym and daily use."</p>
+            <span class="reviewer-name">— Omar</span>
+        </div>
+        <div class="price-tag">EGP 12,500</div>
+        <div class="card-actions">
+            <div class="qty-control">
+                <button class="qty-btn minus">−</button>
+                <span class="qty-val">1</span>
+                <button class="qty-btn plus">+</button>
+            </div>
+            <div class="bottom-row">
+                <button class="add-to-cart-btn"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
+                <span class="heart-icon">🤍</span>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<footer class="main-footer">
+    <div class="footer-bottom">© 2025 ElectroStore — All Rights Reserved</div>
+</footer>
+
+<script>
+document.querySelectorAll('.product-card').forEach(card => {
+    const minus = card.querySelector('.minus');
+    const plus = card.querySelector('.plus');
+    const val = card.querySelector('.qty-val');
+    const cartBtn = card.querySelector('.add-to-cart-btn');
+    const heart = card.querySelector('.heart-icon');
+
+    minus.onclick = () => { let v = parseInt(val.textContent); if (v > 1) val.textContent = v - 1; };
+    plus.onclick = () => { val.textContent = parseInt(val.textContent) + 1; };
+
+    cartBtn.onclick = () => {
+        const name = card.querySelector('.product-name').textContent;
+        const priceStr = card.querySelector('.price-tag').textContent.replace(/[^0-9]/g, '');
+        const price = parseInt(priceStr);
+        const qty = parseInt(val.textContent);
+        let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+        const ex = cart.find(i => i.name === name);
+        if (ex) ex.quantity += qty; else cart.push({ id: Date.now(), name, price, quantity: qty });
+        localStorage.setItem('cart', JSON.stringify(cart));
+        const orig = cartBtn.innerHTML;
+        cartBtn.innerHTML = '✓ Added!';
+        cartBtn.style.background = '#00c853';
+        setTimeout(() => { cartBtn.innerHTML = orig; cartBtn.style.background = ''; }, 1500);
+    };
+
+    heart.onclick = () => { heart.textContent = heart.textContent === '🤍' ? '❤️' : '🤍'; };
+});
+</script>
+</body>
+</html>

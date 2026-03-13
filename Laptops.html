@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laptops | ElectroStore</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="CSS/main.css">
+</head>
+<body>
+
+<!-- ===== Header ===== -->
+<header>
+    <div class="header-left">
+        <h1 class="logo" onclick="location.href='index.html'" style="cursor:pointer">Electro<span>Store</span></h1>
+    </div>
+    <nav>
+        <a href="index.html"><i class="fa-solid fa-house"></i> Home</a>
+        <a href="smartphones.html">Smartphones</a>
+        <a href="Laptops.html" class="active">Laptops</a>
+        <a href="Headphones.html">Headphones</a>
+        <a href="Accessories.html">Accessories</a>
+        <a href="cart.html" class="cart-link"><i class="fa-solid fa-cart-shopping"></i> Cart</a>
+    </nav>
+</header>
+
+<!-- ===== Back ===== -->
+<div class="back-nav">
+    <button class="back-btn" onclick="history.back()">← Back</button>
+</div>
+
+<!-- ===== Page Title ===== -->
+<section class="page-title">
+    <h2>Laptops</h2>
+    <p>High Performance Laptops for Work &amp; Gaming</p>
+</section>
+
+<!-- ===== Products ===== -->
+<section class="products">
+
+    <div class="product" data-id="1" data-name="MacBook Pro" data-price="18000">
+        <img src="images/product/laptop1.jpg" alt="MacBook Pro">
+        <h3>MacBook Pro</h3>
+        <p class="description">High-performance laptop with premium design, powerful processor, and long battery life.</p>
+        <div class="reviews">
+            <div class="stars">★★★★★</div>
+            <p class="review-text">"Amazing laptop for work and editing. Battery life is outstanding."</p>
+            <span class="review-user">– Sarah</span>
+        </div>
+        <p class="price">EGP 18,000</p>
+        <div class="quantity">
+            <button onclick="changeQty(1, -1)">−</button>
+            <span id="qty-1">1</span>
+            <button onclick="changeQty(1, 1)">+</button>
+        </div>
+        <div class="actions">
+            <button onclick="addToCart(1)"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
+            <button class="fav" onclick="toggleFav(this)" title="Wishlist">🤍</button>
+        </div>
+    </div>
+
+    <div class="product" data-id="2" data-name="Dell XPS" data-price="16500">
+        <img src="images/product/laptop2.jpg" alt="Dell XPS">
+        <h3>Dell XPS</h3>
+        <p class="description">Sleek laptop with powerful CPU and excellent display quality for work or entertainment.</p>
+        <div class="reviews">
+            <div class="stars">★★★★☆</div>
+            <p class="review-text">"Smooth performance and good design. Great for professionals."</p>
+            <span class="review-user">– John</span>
+        </div>
+        <p class="price">EGP 16,500</p>
+        <div class="quantity">
+            <button onclick="changeQty(2, -1)">−</button>
+            <span id="qty-2">1</span>
+            <button onclick="changeQty(2, 1)">+</button>
+        </div>
+        <div class="actions">
+            <button onclick="addToCart(2)"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
+            <button class="fav" onclick="toggleFav(this)" title="Wishlist">🤍</button>
+        </div>
+    </div>
+
+    <div class="product" data-id="3" data-name="HP Spectre" data-price="15000">
+        <img src="images/product/laptop3.jpg" alt="HP Spectre">
+        <h3>HP Spectre</h3>
+        <p class="description">Stylish and portable laptop with long battery life and high-end performance.</p>
+        <div class="reviews">
+            <div class="stars">★★★★☆</div>
+            <p class="review-text">"Light and fast, perfect for office work and casual gaming."</p>
+            <span class="review-user">– Emily</span>
+        </div>
+        <p class="price">EGP 15,000</p>
+        <div class="quantity">
+            <button onclick="changeQty(3, -1)">−</button>
+            <span id="qty-3">1</span>
+            <button onclick="changeQty(3, 1)">+</button>
+        </div>
+        <div class="actions">
+            <button onclick="addToCart(3)"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
+            <button class="fav" onclick="toggleFav(this)" title="Wishlist">🤍</button>
+        </div>
+    </div>
+
+    <div class="product" data-id="4" data-name="Lenovo ThinkPad" data-price="14400">
+        <img src="images/product/laptop4.jpg" alt="Lenovo ThinkPad">
+        <h3>Lenovo ThinkPad</h3>
+        <p class="description">Reliable laptop for professionals with sturdy build and long-lasting performance.</p>
+        <div class="reviews">
+            <div class="stars">★★★★★</div>
+            <p class="review-text">"Very durable and fast. Perfect for daily office work."</p>
+            <span class="review-user">– Michael</span>
+        </div>
+        <p class="price">EGP 14,400</p>
+        <div class="quantity">
+            <button onclick="changeQty(4, -1)">−</button>
+            <span id="qty-4">1</span>
+            <button onclick="changeQty(4, 1)">+</button>
+        </div>
+        <div class="actions">
+            <button onclick="addToCart(4)"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
+            <button class="fav" onclick="toggleFav(this)" title="Wishlist">🤍</button>
+        </div>
+    </div>
+
+    <div class="product" data-id="5" data-name="Asus ROG Gaming" data-price="19500">
+        <img src="images/product/laptop5.jpg" alt="Asus ROG Gaming">
+        <h3>Asus ROG Gaming</h3>
+        <p class="description">Powerful gaming laptop with high-end graphics, fast processor, and RGB keyboard.</p>
+        <div class="reviews">
+            <div class="stars">★★★★☆</div>
+            <p class="review-text">"Perfect for gaming, smooth performance and great cooling system."</p>
+            <span class="review-user">– Omar</span>
+        </div>
+        <p class="price">EGP 19,500</p>
+        <div class="quantity">
+            <button onclick="changeQty(5, -1)">−</button>
+            <span id="qty-5">1</span>
+            <button onclick="changeQty(5, 1)">+</button>
+        </div>
+        <div class="actions">
+            <button onclick="addToCart(5)"><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
+            <button class="fav" onclick="toggleFav(this)" title="Wishlist">🤍</button>
+        </div>
+    </div>
+
+</section>
+
+<footer class="main-footer">
+    <div class="footer-bottom">© 2025 ElectroStore — All Rights Reserved</div>
+</footer>
+
+<script>
+function changeQty(id, delta) {
+    const el = document.getElementById('qty-' + id);
+    let val = parseInt(el.textContent) + delta;
+    if (val < 1) val = 1;
+    el.textContent = val;
+}
+
+function addToCart(id) {
+    const product = document.querySelector(`.product[data-id="${id}"]`);
+    const name = product.dataset.name;
+    const price = parseInt(product.dataset.price);
+    const qty = parseInt(document.getElementById('qty-' + id).textContent);
+
+    let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+    const existing = cart.find(i => i.id == id);
+    if (existing) { existing.quantity += qty; }
+    else { cart.push({ id, name, price, quantity: qty }); }
+    localStorage.setItem('cart', JSON.stringify(cart));
+
+    const btn = product.querySelector('.actions button:not(.fav)');
+    const orig = btn.innerHTML;
+    btn.innerHTML = '✓ Added!';
+    btn.style.background = '#00c853';
+    setTimeout(() => { btn.innerHTML = orig; btn.style.background = ''; }, 1500);
+}
+
+function toggleFav(btn) {
+    btn.textContent = btn.textContent === '🤍' ? '❤️' : '🤍';
+}
+</script>
+</body>
+</html>

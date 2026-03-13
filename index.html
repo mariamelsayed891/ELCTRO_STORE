@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ElectroStore - Shop premium electronics including smartphones, laptops, headphones and accessories at the best prices in Egypt">
+    <title>ElectroStore - Premium Electronics</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="CSS/main.css">
+</head>
+<body>
+
+<!-- ===== Header ===== -->
+<header>
+    <div class="header-left">
+        <h1 class="logo" onclick="location.href='index.html'" role="button" tabindex="0">
+            Electro<span>Store</span>
+        </h1>
+        <div class="dropdowns-wrapper">
+            <div class="custom-dropdown">
+                <button class="drop-btn" aria-label="All Categories">
+                    <i class="fa-solid fa-sliders"></i> All Categories <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="drop-content">
+                    <a href="#" class="active-item">All Categories <i class="fa-solid fa-check"></i></a>
+                    <a href="smartphones.html"><i class="fa-solid fa-mobile-screen-button"></i> &nbsp;Smartphones</a>
+                    <a href="Laptops.html"><i class="fa-solid fa-laptop"></i> &nbsp;Laptops</a>
+                    <a href="Headphones.html"><i class="fa-solid fa-headphones"></i> &nbsp;Headphones</a>
+                    <a href="Accessories.html"><i class="fa-solid fa-plug"></i> &nbsp;Accessories</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="search-box">
+        <input type="text" id="main-search" placeholder="Search products..." aria-label="Search products">
+        <button id="search-btn" aria-label="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
+    </div>
+
+    <nav aria-label="Main navigation">
+        <div class="nav-links">
+            <a href="login.html"><i class="fa-solid fa-user"></i> Login</a>
+        </div>
+        <a href="cart.html" class="cart-link">
+            <i class="fa-solid fa-cart-shopping"></i> Cart
+        </a>
+    </nav>
+</header>
+
+<!-- ===== Hero Video ===== -->
+<section class="home-video">
+    <video autoplay muted loop playsinline poster="images/video-poster.jpg">
+        <source src="videos/home-video.mp4" type="video/mp4">
+    </video>
+    <div class="video-overlay">
+        <div class="video-text">
+            <h1>Welcome to ElectroStore</h1>
+            <p>Premium Electronics at Your Fingertips</p>
+            <a href="smartphones.html" class="shop-now-btn">Shop Now</a>
+        </div>
+    </div>
+</section>
+
+<!-- ===== Categories ===== -->
+<section class="categories-container">
+    <a href="smartphones.html" class="cat-card">
+        <i class="fa-solid fa-mobile-screen-button"></i>
+        <span>Smartphones</span>
+    </a>
+    <a href="Laptops.html" class="cat-card">
+        <i class="fa-solid fa-laptop"></i>
+        <span>Laptops</span>
+    </a>
+    <a href="Headphones.html" class="cat-card">
+        <i class="fa-solid fa-headphones"></i>
+        <span>Headphones</span>
+    </a>
+    <a href="Accessories.html" class="cat-card">
+        <i class="fa-solid fa-plug"></i>
+        <span>Accessories</span>
+    </a>
+</section>
+
+<!-- ===== Featured Products ===== -->
+<section class="featured-products-section">
+    <div class="section-header">
+        <h2>Featured Products</h2>
+        <a href="smartphones.html" class="view-all-btn">View All</a>
+    </div>
+    <div class="products-grid-container">
+
+        <!-- Smartphone -->
+        <div class="product-premium-card">
+            <div class="premium-image-box bg-black">
+                <span class="badge-discount-home">-25%</span>
+                <img src="images/product/iphone_pro.jpg" alt="ProMax Smartphone X15">
+                <span class="product-label-overlay">Premium Flagship · Triple Camera · OLED Display</span>
+            </div>
+            <div class="premium-info-box">
+                <p class="tag">Smartphones</p>
+                <h3>ProMax Smartphone X15</h3>
+                <p class="desc">Latest flagship with advanced AI camera system</p>
+                <div class="product-rating">
+                    <span class="star filled">★</span><span class="star filled">★</span>
+                    <span class="star filled">★</span><span class="star filled">★</span>
+                    <span class="star half">★</span>
+                    <span class="rating-count">(128)</span>
+                </div>
+                <div class="price-section">
+                    <span class="current-price">EGP 52,999</span>
+                    <span class="old-price">EGP 70,999</span>
+                </div>
+                <button class="add-to-cart-btn" onclick="location.href='smartphones.html'">
+                    <i class="fa-solid fa-cart-plus"></i> Add to Cart
+                </button>
+            </div>
+        </div>
+
+        <!-- Laptop -->
+        <div class="product-premium-card">
+            <div class="premium-image-box bg-light-grey">
+                <span class="badge-discount-home">-30%</span>
+                <img src="images/product/laptop_pro.jpg" alt="UltraBook Pro 16">
+                <span class="product-label-overlay dark-text">Professional · Aluminum · Thin Bezels</span>
+            </div>
+            <div class="premium-info-box">
+                <p class="tag">Laptops</p>
+                <h3>UltraBook Pro 16</h3>
+                <p class="desc">Professional laptop with M2 chip and stunning display</p>
+                <div class="product-rating">
+                    <span class="star filled">★</span><span class="star filled">★</span>
+                    <span class="star filled">★</span><span class="star filled">★</span>
+                    <span class="star filled">★</span>
+                    <span class="rating-count">(94)</span>
+                </div>
+                <div class="price-section">
+                    <span class="current-price">EGP 69,999</span>
+                    <span class="old-price">EGP 99,999</span>
+                </div>
+                <button class="add-to-cart-btn" onclick="location.href='Laptops.html'">
+                    <i class="fa-solid fa-cart-plus"></i> Add to Cart
+                </button>
+            </div>
+        </div>
+
+        <!-- Headphones -->
+        <div class="product-premium-card">
+            <div class="premium-image-box bg-dark-grey">
+                <span class="badge-discount-home">-40%</span>
+                <span class="badge-new-home">NEW</span>
+                <img src="images/product/headphones.jpg" alt="SoundMax Wireless">
+                <span class="product-label-overlay">Premium Over-Ear · Noise Cancelling</span>
+            </div>
+            <div class="premium-info-box">
+                <p class="tag">Headphones</p>
+                <h3>SoundMax Wireless</h3>
+                <p class="desc">Premium noise-cancelling headphones with hi-fi audio</p>
+                <div class="product-rating">
+                    <span class="star filled">★</span><span class="star filled">★</span>
+                    <span class="star filled">★</span><span class="star filled">★</span>
+                    <span class="star">★</span>
+                    <span class="rating-count">(156)</span>
+                </div>
+                <div class="price-section">
+                    <span class="current-price">EGP 8,999</span>
+                    <span class="old-price">EGP 14,999</span>
+                </div>
+                <button class="add-to-cart-btn" onclick="location.href='Headphones.html'">
+                    <i class="fa-solid fa-cart-plus"></i> Add to Cart
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== Trust Features ===== -->
+<section class="trust-features">
+    <div class="feature-item">
+        <div class="icon-circle"><i class="fa-solid fa-truck-fast"></i></div>
+        <h4>Free Shipping</h4>
+        <p>On orders over EGP 3,000</p>
+    </div>
+    <div class="feature-item">
+        <div class="icon-circle"><i class="fa-solid fa-shield-halved"></i></div>
+        <h4>Premium Quality</h4>
+        <p>Authentic products only</p>
+    </div>
+    <div class="feature-item">
+        <div class="icon-circle"><i class="fa-solid fa-rotate-left"></i></div>
+        <h4>Easy Returns</h4>
+        <p>30-day return policy</p>
+    </div>
+    <div class="feature-item">
+        <div class="icon-circle"><i class="fa-solid fa-headset"></i></div>
+        <h4>24/7 Support</h4>
+        <p>Always here to help</p>
+    </div>
+</section>
+
+<!-- ===== Newsletter Popup ===== -->
+<div id="newsletter-popup" class="popup-overlay">
+    <div class="popup-content">
+        <button class="close-btn" id="close-popup" aria-label="Close">&times;</button>
+        <div class="popup-body">
+            <h2>Get 20% Off Your First Order!</h2>
+            <p>Subscribe to our newsletter for exclusive deals and latest arrivals.</p>
+            <div class="input-group-custom">
+                <input type="email" id="popup-email" placeholder="Enter your email address" aria-label="Email">
+                <button type="button" id="subscribe-btn">Subscribe!</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===== Footer ===== -->
+<footer class="main-footer">
+    <div class="footer-container">
+        <div class="footer-column">
+            <h3>Shop</h3>
+            <ul>
+                <li><a href="smartphones.html">Smartphones</a></li>
+                <li><a href="Laptops.html">Laptops</a></li>
+                <li><a href="Headphones.html">Headphones</a></li>
+                <li><a href="Accessories.html">Accessories</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3>Support</h3>
+            <ul>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">Shipping Info</a></li>
+                <li><a href="#">Returns</a></li>
+                <li><a href="#">FAQ</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3>Company</h3>
+            <ul>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Careers</a></li>
+                <li><a href="#">Press</a></li>
+                <li><a href="#">Blog</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3>Follow Us</h3>
+            <ul>
+                <li><a href="#"><i class="fa-brands fa-instagram"></i> &nbsp;Instagram</a></li>
+                <li><a href="#"><i class="fa-brands fa-facebook"></i> &nbsp;Facebook</a></li>
+                <li><a href="#"><i class="fa-brands fa-tiktok"></i> &nbsp;TikTok</a></li>
+                <li><a href="#"><i class="fa-brands fa-youtube"></i> &nbsp;YouTube</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">© 2025 ElectroStore — All Rights Reserved</div>
+</footer>
+
+<!-- ===== Chatbot Button ===== -->
+<div id="chatbot-btn" role="button" aria-label="Open chatbot">
+    <i class="fa-solid fa-comments"></i>
+</div>
+
+<!-- ===== WhatsApp ===== -->
+<a href="https://wa.me/201145958476" target="_blank" rel="noopener noreferrer" id="whatsapp-btn" aria-label="WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
+</a>
+
+<!-- ===== Chatbot Box ===== -->
+<div id="chatbot-box" role="dialog" aria-label="Customer support chatbot">
+    <div class="chatbot-header">
+        <span>ElectroBot 🤖</span>
+        <button id="close-chat" aria-label="Close">&times;</button>
+    </div>
+    <div class="chatbot-messages" id="chat-messages">
+        <div class="bot-msg">
+            👋 Hi! Welcome to <b>ElectroStore</b><br><br>
+            Ask me about:<br>
+            📱 Smartphones &nbsp;💻 Laptops<br>
+            🎧 Headphones &nbsp;🚚 Shipping
+        </div>
+    </div>
+    <div class="chatbot-input">
+        <input type="text" id="chat-input" placeholder="Type your message..." aria-label="Chat message">
+        <button id="send-btn" aria-label="Send"><i class="fa-solid fa-paper-plane"></i></button>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+// Popup
+setTimeout(() => {
+    document.getElementById('newsletter-popup').style.display = 'flex';
+}, 3000);
+document.getElementById('close-popup').onclick = () => {
+    document.getElementById('newsletter-popup').style.display = 'none';
+};
+document.getElementById('subscribe-btn').onclick = () => {
+    const email = document.getElementById('popup-email').value;
+    if (email) { alert('Thanks for subscribing! Your 20% off code: ELECTRO20'); document.getElementById('newsletter-popup').style.display = 'none'; }
+    else alert('Please enter a valid email.');
+};
+
+// Chatbot
+const chatBtn = document.getElementById('chatbot-btn');
+const chatBox = document.getElementById('chatbot-box');
+const closeChat = document.getElementById('close-chat');
+chatBtn.onclick = () => { chatBox.style.display = chatBox.style.display === 'flex' ? 'none' : 'flex'; };
+closeChat.onclick = () => { chatBox.style.display = 'none'; };
+
+const chatInput = document.getElementById('chat-input');
+const sendBtn = document.getElementById('send-btn');
+const chatMessages = document.getElementById('chat-messages');
+
+function sendMessage() {
+    const text = chatInput.value.trim();
+    if (!text) return;
+    chatMessages.innerHTML += `<div class="user-msg">${text}</div>`;
+    chatMessages.innerHTML += `<div class="bot-msg">${getReply(text)}</div>`;
+    chatInput.value = '';
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+sendBtn.onclick = sendMessage;
+chatInput.addEventListener('keydown', e => { if (e.key === 'Enter') sendMessage(); });
+
+function getReply(msg) {
+    msg = msg.toLowerCase();
+    if (msg.includes('hi') || msg.includes('hello')) return '👋 Hello! How can I help you today?';
+    if (msg.includes('laptop')) return '💻 We have Dell, HP, MacBook & Asus ROG laptops starting from EGP 14,400!';
+    if (msg.includes('phone') || msg.includes('mobile') || msg.includes('smartphone')) return '📱 We stock iPhone 17 Pro Max, iPhone 15/16, Samsung Galaxy S24 Ultra & more!';
+    if (msg.includes('headphone')) return '🎧 AirPods, Sony WH-1000XM5, Bose QC45, Beats Studio3 — all available!';
+    if (msg.includes('shipping') || msg.includes('delivery')) return '🚚 Delivery within 2–5 business days across all Egypt governorates.';
+    if (msg.includes('payment') || msg.includes('pay')) return '💳 We accept Cash, Visa, Mastercard, and installment plans.';
+    if (msg.includes('return') || msg.includes('refund')) return '🔁 30-day return policy for all products in original condition.';
+    if (msg.includes('price') || msg.includes('offer') || msg.includes('discount')) return '🏷️ We have great offers! Check our featured products on the homepage.';
+    return '🤖 Please ask about our products, shipping, or payment — I\'m here to help!';
+}
+</script>
+</body>
+</html>
